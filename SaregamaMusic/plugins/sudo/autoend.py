@@ -24,7 +24,6 @@ async def auto_end_stream(_, message: Message):
     else:
         await message.reply_text(usage)
 
-
 @app.on_message(filters.command("autoleave") & SUDOERS)
 async def auto_leave_chat(_, message: Message):
     zerostate = await is_autoleave()
