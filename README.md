@@ -21,7 +21,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
-## 🖇 𝚳𝐔𝛅𝐈𝖢 𝐖❍᰻⃪᱂𝐋𝐃 [ ᴜᴘᴅᴀᴛᴇ ]
+## 🖇 ❛ 𝗠𝘂𝘀𝗶𝗰 𝗪𝗼𝗿𝗹𝗱 𝗨𝗽𝗱𝗮𝘁𝗲 ❜
 
 <p>
 <a href="https://t.me/SaregamaMusic_bot"><img src="https://img.shields.io/badge/SAREGAMA%20MUSIC%20Bot-blueviolet?style=for-the-badge&logo=appveyor" width="200""/></a>
