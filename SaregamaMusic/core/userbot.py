@@ -155,7 +155,7 @@ class Userbot(Client):
 
     async def stop(self):
         LOGGER(__name__).info(f"Stopping Assistants...")
-          try:
+        try:
             if config.STRING1:
                 await self.one.stop()
             if config.STRING2:
