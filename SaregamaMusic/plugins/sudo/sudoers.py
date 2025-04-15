@@ -69,4 +69,3 @@ async def sudoers_list(client, message: Message, _):
         await message.reply_text(_["sudo_7"])
     else:
         await message.reply_text(text, reply_markup=close_markup(_))
-
