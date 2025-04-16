@@ -1,5 +1,6 @@
 import random
 import string
+import asyncio
 
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InputMediaPhoto, Message
@@ -62,6 +63,11 @@ async def play_commnd(
     spotify = None
     user_id = message.from_user.id
     user_name = message.from_user.first_name
+    
+    # Check if video play is requested but video mode is not available
+    if video and not config.VIDEO_STREAM_ENABLED:
+        return await mystic.edit_text("Video streaming is currently disabled")
+
     audio_telegram = (
         (message.reply_to_message.audio or message.reply_to_message.voice)
         if message.reply_to_message
@@ -72,6 +78,7 @@ async def play_commnd(
         if message.reply_to_message
         else None
     )
+
     if audio_telegram:
         if audio_telegram.file_size > 104857600:
             return await mystic.edit_text(_["play_5"])
@@ -165,7 +172,8 @@ async def play_commnd(
                         config.PLAYLIST_FETCH_LIMIT,
                         message.from_user.id,
                     )
-                except:
+                except Exception as e:
+                    print(f"Playlist Error: {e}")
                     return await mystic.edit_text(_["play_3"])
                 streamtype = "playlist"
                 plist_type = "yt"
@@ -177,8 +185,11 @@ async def play_commnd(
                 cap = _["play_9"]
             else:
                 try:
-                    details, track_id = await YouTube.track(url)
-                except:
+                    details, track_id = await YouTube.track(url, video=video)
+                    if video and not details.get('video_available', True):
+                        return await mystic.edit_text("Video is not available for this track")
+                except Exception as e:
+                    print(f"Track Error: {e}")
                     return await mystic.edit_text(_["play_3"])
                 streamtype = "youtube"
                 img = details["thumb"]
@@ -190,7 +201,7 @@ async def play_commnd(
             spotify = True
             if not config.SPOTIFY_CLIENT_ID and not config.SPOTIFY_CLIENT_SECRET:
                 return await mystic.edit_text(
-                    "» sᴘᴏᴛɪғʏ ɪs ɴᴏᴛ sᴜᴘᴘᴏʀᴛᴇᴅ ʏᴇᴛ.\n\nᴘʟᴇᴀsᴇ ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ."
+                    "Spotify credentials not configured. Please contact admin."
                 )
             if "track" in url:
                 try:
@@ -333,8 +344,11 @@ async def play_commnd(
         if "-v" in query:
             query = query.replace("-v", "")
         try:
-            details, track_id = await YouTube.track(query)
-        except:
+            details, track_id = await YouTube.track(query, video=video)
+            if video and not details.get('video_available', True):
+                return await mystic.edit_text("Video is not available for this track")
+        except Exception as e:
+            print(f"Search Error: {e}")
             return await mystic.edit_text(_["play_3"])
         streamtype = "youtube"
     if str(playmode) == "Direct":
@@ -373,7 +387,7 @@ async def play_commnd(
                 forceplay=fplay,
             )
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"Stream Error: {e}")
             ex_type = type(e).__name__
             err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
             return await mystic.edit_text(err)
@@ -463,8 +477,11 @@ async def play_music(client, CallbackQuery, _):
         _["play_2"].format(channel) if channel else _["play_1"]
     )
     try:
-        details, track_id = await YouTube.track(vidid, True)
-    except:
+        details, track_id = await YouTube.track(vidid, True, video=(mode == "v"))
+        if mode == "v" and not details.get('video_available', True):
+            return await mystic.edit_text("Video is not available for this track")
+    except Exception as e:
+        print(f"Callback Error: {e}")
         return await mystic.edit_text(_["play_3"])
     if details["duration_min"]:
         duration_sec = time_to_seconds(details["duration_min"])
@@ -501,12 +518,11 @@ async def play_music(client, CallbackQuery, _):
             forceplay=ffplay,
         )
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Stream Error: {e}")
         ex_type = type(e).__name__
         err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
         return await mystic.edit_text(err)
     return await mystic.delete()
-
 
 @app.on_callback_query(filters.regex("AnonymousAdmin") & ~BANNED_USERS)
 async def anonymous_check(client, CallbackQuery):
