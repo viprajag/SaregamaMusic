@@ -84,8 +84,8 @@ async def gen_thumb(videoid: str):
             views = result.get("viewCount", {}).get("short", "Unknown Views")
             channel = result.get("channel", {}).get("name", "Unknown Channel")
 
-        filepath = "SaregamaMusic/assets/IMG_20250416_123725_689.jpg"
-        youtube = Image.open(filepath)
+        image_path = "SaregamaMusic/assets/IMG_20250416_123725_689.jpg"
+        youtube = Image.open(image_path)
         image1 = changeImageSize(1280, 720, youtube)
 
         image2 = image1.convert("RGBA")
