@@ -100,14 +100,24 @@ def crop_center_circle(img, output_size, border, border_color, crop_scale=1.5):
     return result
 
 def draw_text_with_shadow(background, draw, position, text, font, fill, shadow_offset=(3, 3), shadow_blur=5):
+   
     shadow = Image.new('RGBA', background.size, (0, 0, 0, 0))
     shadow_draw = ImageDraw.Draw(shadow)
+   
+  
     shadow_draw.text(position, text, font=font, fill="black")
+   
+  
     shadow = shadow.filter(ImageFilter.GaussianBlur(radius=shadow_blur))
+   
+  
     background.paste(shadow, shadow_offset, shadow)
+    
+  
     draw.text(position, text, font=font, fill=fill)
 
-    
+
+
 async def gen_thumb(videoid: str):
     try:
         if os.path.isfile(f"cache/{videoid}_v4.png"):
@@ -144,8 +154,10 @@ async def gen_thumb(videoid: str):
             else:
                 channel = "Unknown Channel"
 
+      
         async with aiohttp.ClientSession() as session:
             async with session.get(thumbnail) as resp:
+             
                 content = await resp.read()
                 if resp.status == 200:
                     content_type = resp.headers.get('Content-Type')
@@ -161,14 +173,18 @@ async def gen_thumb(videoid: str):
                     f = await aiofiles.open(filepath, mode="wb")
                     await f.write(await resp.read())
                     await f.close()
-
-        image_path = f"cache/thumb{videoid}.png"
+                    # os.system(f"file {filepath}")
+      
+      
+  image_path = f"cache/thumb{videoid}.png"
         youtube = Image.open(image_path)
         image1 = changeImageSize(1280, 720, youtube)
+       
         image2 = image1.convert("RGBA")
         background = image2.filter(filter=ImageFilter.BoxBlur(20))
         enhancer = ImageEnhance.Brightness(background)
         background = enhancer.enhance(0.6)
+
 
         start_gradient_color = random_color()
         end_gradient_color = random_color()
@@ -179,6 +195,7 @@ async def gen_thumb(videoid: str):
         arial = ImageFont.truetype("SaregamaMusic/assets/font2.ttf", 30)
         font = ImageFont.truetype("SaregamaMusic/assets/font.ttf", 30)
         title_font = ImageFont.truetype("SaregamaMusic/assets/font3.ttf", 45)
+
 
         circle_thumbnail = crop_center_circle(youtube, 400, 20, start_gradient_color)
         circle_thumbnail = circle_thumbnail.resize((400, 400))
@@ -191,6 +208,7 @@ async def gen_thumb(videoid: str):
         draw_text_with_shadow(background, draw, (text_x_position, 230), title1[1], title_font, (255, 255, 255))
         draw_text_with_shadow(background, draw, (text_x_position, 320), f"{channel}  |  {views[:23]}", arial, (255, 255, 255))
 
+ 
         line_length = 580  
         line_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
