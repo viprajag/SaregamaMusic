@@ -7,7 +7,7 @@ from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
 from SaregamaMusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
-from SaregamaMusic.core.call import Champu
+from SaregamaMusic.core.call import AMBOTOP
 from SaregamaMusic.utils import seconds_to_min, time_to_seconds
 from SaregamaMusic.utils.channelplay import get_channeplayCB
 from SaregamaMusic.utils.decorators.language import languageCB
