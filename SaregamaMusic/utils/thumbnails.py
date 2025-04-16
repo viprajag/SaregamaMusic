@@ -84,8 +84,8 @@ async def gen_thumb(videoid: str):
             views = result.get("viewCount", {}).get("short", "Unknown Views")
             channel = result.get("channel", {}).get("name", "Unknown Channel")
 
-        gen_thumb = f"cache/thumb{videoid}.png"
-        youtube = Image.open(image_path)
+        image_path = f"cache/thumb{videoid}.png"
+        youtube = Image.open(gen_thumb)
         image1 = changeImageSize(1280, 720, youtube)
 
         image2 = image1.convert("RGBA")
