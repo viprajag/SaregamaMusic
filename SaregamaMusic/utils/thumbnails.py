@@ -176,7 +176,7 @@ async def gen_thumb(videoid: str):
                     # os.system(f"file {filepath}")
       
       
-  image_path = f"cache/thumb{videoid}.png"
+        image_path = f"cache/thumb{videoid}.png"
         youtube = Image.open(image_path)
         image1 = changeImageSize(1280, 720, youtube)
        
