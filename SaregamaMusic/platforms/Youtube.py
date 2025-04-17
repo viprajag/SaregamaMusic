@@ -10,7 +10,6 @@ from pyrogram.types import Message
 from youtubesearchpython.__future__ import VideosSearch
 from SaregamaMusic.utils.database import is_on_off
 from SaregamaMusic.utils.formatters import time_to_seconds
-from config import YT_API_KEY, YTPROXY_URL as YTPROXY
 import os
 import glob
 import random
