@@ -62,9 +62,6 @@ def stream_markup_timer(_, chat_id, played, dur):
         ],
         [
             InlineKeyboardButton(
-                text="𝐔ρ𝖽αтєѕ", url=f"https://t.me/Music_World_Update"
-            ),
-            InlineKeyboardButton(
                 text="ᴀℓℓ ʙσƭ", url=f"https://t.me/Music_World_Update/5308"
             ),
         ],
@@ -82,9 +79,6 @@ def stream_markup(_, chat_id):
             InlineKeyboardButton(text="▢", callback_data=f"ADMIN Stop|{chat_id}"),
         ],
         [
-            InlineKeyboardButton(
-                text="𝐔ρ𝖽αтєѕ", url=f"https://t.me/Music_World_Update"
-            ),
             InlineKeyboardButton(
                 text="ᴀℓℓ ʙσƭ", url="https://t.me/Music_World_Update/5308"
             ),
