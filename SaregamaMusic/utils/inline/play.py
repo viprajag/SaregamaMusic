@@ -62,7 +62,7 @@ def stream_markup_timer(_, chat_id, played, dur):
         ],
         [
             InlineKeyboardButton(
-                text="ᴀℓℓ ʙσƭ", url=f"https://t.me/Music_World_Update/5308"
+                text="✧ ᴀᴅᴅ ᴍᴇ ✧", url=f"https://t.me/SaregamaMusic_bot?startgroup=true"
             ),
         ],
     ]
