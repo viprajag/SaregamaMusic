@@ -9,7 +9,7 @@ HELP_1 = """```
 ❍ /player : ɢєᴛ ᴧ ɪηᴛєʀᴧᴄᴛɪᴠє ᴩʟᴧʏєʀ ᴩᴧηєʟ
 ❍ /queue : sʜσᴡs ᴛʜє ǫυєυєᴅ ᴛʀᴧᴄᴋs ʟɪsᴛ
 
-❖ 𝐏ᴏᴡᴇʀᴇᴅ 𝖡ʏ »</b> <a href=\"https://t.me/RockyXSupport\">˹𝐓𝗲𝝰𝗺 𝐑𝝾𝗰𝝹𝝲˼ 🍷**
+"<b>❖ ᴘᴏᴡᴇʀᴇᴅ ➥</b> <b><a href='https://t.me/MrRockyTg'>˹тєᴧϻ 𝐑𝝾𝗰𝝹𝝲˼</a></b>"
 """
 
 HELP_2 = """```
