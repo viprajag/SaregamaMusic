@@ -4,17 +4,17 @@ from pyrogram import filters
 from pyrogram.enums import ChatMembersFilter
 from pyrogram.errors import FloodWait
 
-from SONALI_MUSIC import app
-from SONALI_MUSIC.misc import SUDOERS
-from SONALI_MUSIC.utils.database import (
+from SaregamaMusic import app
+from SaregamaMusic.misc import SUDOERS
+from SaregamaMusic.utils.database import (
     get_active_chats,
     get_authuser_names,
     get_client,
     get_served_chats,
     get_served_users,
 )
-from SONALI_MUSIC.utils.decorators.language import language
-from SONALI_MUSIC.utils.formatters import alpha_to_int
+from SaregamaMusic.utils.decorators.language import language
+from SaregamaMusic.utils.formatters import alpha_to_int
 from config import adminlist
 
 IS_BROADCASTING = False
