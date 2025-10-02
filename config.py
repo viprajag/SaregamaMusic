@@ -23,7 +23,7 @@ LOG_GROUP_ID = int(getenv("LOG_GROUP_ID", None))
 
 # Vars For API End Pont.
 BASE_API_URL = "https://zyro.zyronetworks.shop"
-BASE_API_KEY = "IcDU1vq1WSMo5XfpatPmsMNanB5eRkM1"
+BASE_API_KEY = "JkBwVWTiMTdsflfi4MhDfIiBKu7MPg6F"
 
 # Get this value from @MissRose_Bot on Telegram by /id
 OWNER_ID = int(getenv("OWNER_ID", None)) 
@@ -43,7 +43,7 @@ GIT_TOKEN = getenv(
 )  # Fill this variable if your upstream repository is private
 
 SUPPORT_CHANNEL = getenv("SUPPORT_CHAT", "https://t.me/StylishNameFont")
-SUPPORT_GROUP = getenv("SUPPORT_GROUP", "https://t.me/Nysa_Update")
+SUPPORT_GROUP = getenv("SUPPORT_GROUP", "https://t.me/Friend_Ki_Masti")
 
 # Set this to True if you want the assistant to automatically leave chats after an interval
 AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", False))
