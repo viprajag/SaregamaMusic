@@ -22,8 +22,9 @@ DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", 600))
 LOG_GROUP_ID = int(getenv("LOG_GROUP_ID", None))
 
 # Vars For API End Pont.
-BASE_API_URL = "https://zyro.zyronetworks.shop"
-BASE_API_KEY = "JkBwVWTiMTdsflfi4MhDfIiBKu7MPg6F"
+API_URL = getenv("API_URL", 'https://api.thequickearn.xyz') #youtube song url
+API_KEY = getenv("API_KEY", "NxGBNexGenBotsdbfa2f") # youtube song api key, get it from https://t.me/MR_ROCKY_TZ
+
 
 # Get this value from @MissRose_Bot on Telegram by /id
 OWNER_ID = int(getenv("OWNER_ID", None)) 
