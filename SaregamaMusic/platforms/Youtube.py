@@ -10,13 +10,6 @@ from pyrogram.types import Message
 from youtubesearchpython.__future__ import VideosSearch
 from SaregamaMusic.utils.database import is_on_off
 from SaregamaMusic.utils.formatters import time_to_seconds
-import os
-import glob
-import random
-import logging
-import aiohttp
-import config
-from config import API_URL, API_KEY
 
 
 def cookie_txt_file():
